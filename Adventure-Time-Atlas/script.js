@@ -316,7 +316,9 @@ function showLocalChardleRecords(message) {
   state.entries = organizeEntries(LOCAL_CHARDLE_ENTRIES.filter(entry => entry.image).map(entry => ({
     ...entry,
     raw: entry,
-    description: `${entry.gender} ${entry.alignment} character with ${entry.hair.toLowerCase()} hair and ${entry.skin.toLowerCase()} skin. First seen in ${entry.firstSeason}.`
+    type: entry.species || 'Resident',
+    description: entry.notes || `${entry.name} is a ${entry.species || 'resident'} from ${entry.origin || 'unknown territory'}.`,
+    location: entry.origin || 'Unknown territory'
   })));
   renderFilters();
   renderCards();
